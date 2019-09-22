@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var ObjectId = require('mongodb').ObjectId;
+var unique = require('array-unique');
+
 
 // Get All Items, render Update list
 module.exports.getItems = function(req, res) {
@@ -18,13 +20,17 @@ module.exports.getItems = function(req, res) {
                     data: result
                 })
             }else{
-                var r;
-                result.forEach(function (g) { r = JSON.stringify(g.category); });
-                console.log(r);
+                var r = [];
+                result.forEach(function (g) {
+                    r.push(g.category) ;
+                });
+                console.log(result);
+
                 res.render('itemlist', {
 
                     title: 'items List',
-                    data: result
+                    data: result,
+                    category: unique(r)
                 })
             }
 
@@ -52,8 +58,14 @@ module.exports.getItemsingle = function(req, res) {
 
 module.exports.getCategory = function(req, res) {
     var o_id = req.params.cat;
-    console.log(o_id);
-    req.db.collection('items').find({ category: o_id }).sort({"_id": -1}).toArray(function(err, result) {
+    var category = [];
+        req.db.collection('items').find({ category: o_id }).sort({"_id": -1}).toArray(function(err, result) {
+
+            req.db.collection('items').find().toArray(function(err, result2) {
+                result2.forEach(function (g) {
+                    category.push(g.category) ;
+                });
+
         if (err) {
             res.render('backend/items', {
                 title: 'item List',
@@ -67,16 +79,20 @@ module.exports.getCategory = function(req, res) {
                     data: result
                 })
             }else{
-                console.log(result);
+                console.log(unique(category));
+
                 res.render('itemlist', {
 
                     title: 'items List',
-                    data: result
+                    data: result,
+                    category: unique(category)
                 })
             }
 
         }
     })
+        });
+
 };
 
 

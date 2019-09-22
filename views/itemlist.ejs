@@ -29,31 +29,15 @@
                             <div class="widget widget-categories">
                                 <h4 class="title-widget text-center">Kategorije</h4>
                                 <ul>
+                                    <% if(category) {%>
+                                    <% category.forEach(function (c) {  %>
                                     <li>
-                                        <a href="/items/category/povrće">Povrće
+                                        <a href="/items/category/<%= c %>"><%= c %>
                                             <span>(5)</span>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="/items/category/voće">Voće
-                                            <span>(7)</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/items/category/tegle">Tegle
-                                            <span>(9)</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="shop.html">Zrnevlje
-                                            <span>(10)</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/items/category/sušeno">Sušeno
-                                            <span>(6)</span>
-                                        </a>
-                                    </li>
+                                    <% })} %>
+
                                 </ul>
                             </div>
                             <div class="widget widget-tags">

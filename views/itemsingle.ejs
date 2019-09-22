@@ -83,11 +83,11 @@
                                     <a href="#" rel="tag"><%= item.category %></a>
                                 </p>
                                 <p class="tagged-as">Tags:
-                                    <a href="#" rel="tag">Natural</a>,
-                                    <a href="#" rel="tag">Orchid</a>,
-                                    <a href="#" rel="tag">Health</a>,
-                                    <a href="#" rel="tag">Green</a>,
-                                    <a href="#" rel="tag">Vegetable</a>
+                                    <% if(item.tags) { %>
+                                    <% item.tags.forEach(function (t) {  %>
+                                    <a href="#" rel="tag"><%= t%></a>,
+                                    <% })}%>
+
                                 </p>
                                 <p class="id">ID:
                                     <a href="#">A203</a>
