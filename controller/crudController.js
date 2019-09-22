@@ -18,7 +18,9 @@ module.exports.getItems = function(req, res) {
                     data: result
                 })
             }else{
-                console.log(result);
+                var r;
+                result.forEach(function (g) { r = JSON.stringify(g.category); });
+                console.log(r);
                 res.render('itemlist', {
 
                     title: 'items List',
@@ -47,6 +49,37 @@ module.exports.getItemsingle = function(req, res) {
         }
     })
 };
+
+module.exports.getCategory = function(req, res) {
+    var o_id = req.params.cat;
+    console.log(o_id);
+    req.db.collection('items').find({ category: o_id }).sort({"_id": -1}).toArray(function(err, result) {
+        if (err) {
+            res.render('backend/items', {
+                title: 'item List',
+                data: ''
+            })
+        } else {
+            var user = req.user;
+            if (user && user.username === "boris") {
+                res.render('backend/items', {
+                    title: 'items List',
+                    data: result
+                })
+            }else{
+                console.log(result);
+                res.render('itemlist', {
+
+                    title: 'items List',
+                    data: result
+                })
+            }
+
+        }
+    })
+};
+
+
 // Get Create Item page, render create item
 module.exports.getCreateItem = function(req, res) {
     res.render('backend/createitem', {

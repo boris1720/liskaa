@@ -26,7 +26,7 @@
           <p>Zbog čega je uvek bolje pre odabrati sveže i domaće, neprskano voće i povrće nego bilo koji proizvod iz nekog od trgovinskih lanaca iz tokova masovne monoagrikulturne proizvodnje?</p>
         </div>
         <div class="tp-caption" data-x="center" data-y="center" data-voffset="['120','120','200','200']" data-transform_in="y:100px;opacity:0;s:800;e:easeInOutCubic;" data-transform_out="y:200px;opacity:0;s:300;" data-start="1600">
-          <a class="btn btn-brand pill" href="product-list.html">ZAŠTO?</a>
+          <a class="btn btn-brand pill" href="/about">ZAŠTO?</a>
         </div>
       </li>
     </ul>
@@ -37,7 +37,7 @@
         <div class="product-category-grid-style-1">
           <div class="row">
             <div class="col-sm-4">
-              <a href="#">
+              <a href="/items/category/voće">
                 <figure class="product-category-item">
                   <div class="thumbnail">
                     <img src="images/slike/vocepozadina.png" alt="" />
@@ -52,7 +52,7 @@
               <a href="#">
                 <figure class="product-category-item">
                   <div class="thumbnail">
-                    <img src="images/slike/povrcepozadina.png" alt="" />
+                    <img src="/images/slike/povrcepozadina.png" alt="" />
                   </div>
                   <figcaption>
                     <h3 style="color: #725843;font-weight: bold">Povrće</h3>
@@ -61,7 +61,7 @@
               </a>
             </div>
             <div class="col-sm-4">
-              <a href="#">
+              <a href="/items/category/tegle">
                 <figure class="product-category-item">
                   <div class="thumbnail">
                     <img src="images/slike/teglepozadina.png" alt="" />
@@ -91,7 +91,7 @@
           <figure class="item">
             <div class="product product-style-2">
               <div class="img-wrapper">
-                <a href="/items/1">
+                <a href="/items/<%= item._id %>">
                   <img class="img-responsive" src="images/slike/<%= item.image %>" alt="product thumbnail" />
                 </a>
                 <div class="product-control-wrapper bottom-right">
@@ -116,7 +116,7 @@
                 </div>
                 <figcaption class="desc">
                   <h3>
-                    <a class="product-name" href="/items/1"><%= item.name %></a>
+                    <a class="product-name" href="/items/<%= item._id %>"><%= item.name %></a>
                   </h3>
                   <span class="price">RSD <%= item.price %></span>
                 </figcaption>
@@ -129,7 +129,7 @@
           <figure class="item item-size-2">
             <div class="product product-style-2">
               <div class="img-wrapper">
-                <a href="product-detail.html">
+                <a href="/item/<%= item._id %>">
                   <img class="img-responsive" src="images/slike/<%= item.image %>" alt="product thumbnail" />
                 </a>
                 <div class="product-control-wrapper bottom-right">
@@ -154,7 +154,7 @@
                 </div>
                 <figcaption class="desc">
                   <h3>
-                    <a class="product-name" href="product-detail.html"><%= item.name %></a>
+                    <a class="product-name" href="/item/<%= item._id %>"><%= item.name %></a>
                   </h3>
                   <span class="price">RSD <%= item.price %></span>
                 </figcaption>
@@ -167,7 +167,7 @@
           <figure class="item">
             <div class="product product-style-2">
               <div class="img-wrapper">
-                <a href="/items/1">
+                <a href="/items/<%= item._id %>">
                   <img class="img-responsive" src="images/slike/<%= item.image %>" alt="product thumbnail" />
                 </a>
                 <div class="product-control-wrapper bottom-right">
@@ -192,7 +192,7 @@
                 </div>
                 <figcaption class="desc">
                   <h3>
-                    <a class="product-name" href="/items/1"><%= item.name%></a>
+                    <a class="product-name" href="/items/<%= item._id %>"><%= item.name%></a>
                   </h3>
                   <span class="price">RSD <%= item.price %></span>
                 </figcaption>
