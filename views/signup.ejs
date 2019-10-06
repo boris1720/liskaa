@@ -15,15 +15,83 @@
     <% include partials/header.ejs %>
     <section class="boxed-sm">
         <div class="container">
-            <form action="/auth/signup" class="col-md-5" method="post">
-                <div class="form-group">
+            <form action="/auth/signup" class="col-md-12" method="post">
+                <div class="row">
+                <div class="col-md-6 form-group">
                     <label for="">Username :</label>
                     <input autofocus class="form-control" type="text" name="username">
                 </div>
-                <div class="form-group">
+                </div>
+                <div class="row">
+                <div class="col-md-6 form-group">
                     <label for="">Password : </label>
                     <input class="form-control" type="password" name="password">
                 </div>
+                </div>
+
+                <h4>Detalji za isporuku</h4>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <div class="form-group Orchid-form no-radius">
+                            <label>Ime *</label>
+                            <input class="form-control" type="text" name="firstname">
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <div class="form-group Orchid-form no-radius">
+                            <label>Prezime *</label>
+                            <input class="form-control" type="text" name="lastname">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group Orchid-form no-radius">
+                            <label>E-mail adresa *</label>
+                            <input class="form-control" type="email" name="email">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group Orchid-form no-radius">
+                            <label>Broj telefona *</label>
+                            <input class="form-control" type="text" name="phone">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="form-group Orchid-form no-radius">
+                            <label>Adresa *</label>
+                            <input class="form-control" type="text" name="address">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group Orchid-form no-radius">
+                            <label>Grad/Mesto *</label>
+                            <input class="form-control" type="text"  name="city">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="woocommerce-account-fields">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> Registrujte se?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <input type="submit" value="Signup" class="btn secondary white">
                 <a href="/login" class="btn btn-link">Login</a>
             </form>
@@ -31,6 +99,7 @@
 
     </section>
 </div>
+<% include partials/footer.ejs %>
 <script src="js/library/jquery.min.js"></script>
 <script src="js/library/bootstrap.min.js"></script>
 <script src="js/function-check-viewport.js"></script>

@@ -11,43 +11,64 @@
     <link rel="stylesheet" type="text/css" href="../css/main.css" />
 </head>
 <body class="animsition">
-<div class="login" id="page">
-    <% include ../partials/adminheader.ejs %>
-    <section class="boxed-sm">
-        <div class="container text-center">
-            <table width='80%' border=0>
+<div class="shop-layout-3" id="page">
+    <% include ../partials/header.ejs %>
 
-                <tr style='text-align:left; background-color:#CCC'>
-                    <th>Order ID</th>
-                    <th>Item ID</th>
-                    <th>User ID</th>
-                    <th>Action</th>
-                </tr>
+    <section >
+        <div class="container" style="width: 100%">
+            <div class="row">
+                <% include ../partials/adminheader.ejs %>
+                <div class="col-md-10">
+                    <div class="tab-content tab-content-style-1">
+                        <div class="active" id="users" >
 
+                            <table class="shop_attributes table table-striped table-bordered">
+                                <tbody>
+                                <tr style='text-align:left; background-color:#CCC'>
+                                    <th>Order ID</th>
+                                    <th>Username</th>
+                                    <th>Items </th>
+                                    <th>Total price</th>
+                                    <th>Status</th>
 
-                <tr>
-                    <td>123</td>
-                    <td>Jabuka</td>
-                    <td>Boris</td>
+                                    <th>Action</th>
+                                </tr>
 
-                    <td>
-                        <div style="float:left">
-                            <a href='/items/edit/1'>Edit</a> &nbsp;
-                            <form method="post" action="/items/delete/1" style="float:right">
-                                <input type="submit" name="delete" value='Delete' onClick="return confirm('Are you sure you want to delete?')" />
-                                <input type="hidden" name="_method" value="DELETE" />
-                            </form>
+                                <% if(orders){ %>
+                                <% orders.forEach(function (o) { %>
+                                <tr>
+                                    <td><%= o._id %></td>
+                                    <td><%= o.username %></td>
+                                    <td>
+                                        <% o.items.forEach(function (v) { %>
+                                        <p><%= v.itemname %> // <%= v.itemprice %> RSD x <%= v.qty %></p>
+                                        <% }) %>
+                                    </td>
+                                    <td>
+                                        <p><%= o.orderprice %> RSD</p>
+                                    </td>
+                                    <td><%= o.status %></td>
+
+                                    <td>
+                                        <div style="float:left">
+
+                                            <a href="/orders/<%= o._id %>">Details</a>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <% })} %>
+                                </tbody>
+                            </table>
                         </div>
-                    </td>
-                </tr>
-
-            </table>
-
-
+                    </div>
+                </div>
+            </div>
         </div>
 
     </section>
 </div>
+<% include ../partials/footer.ejs %>
 <script src="/js/library/jquery.min.js"></script>
 <script src="/js/library/bootstrap.min.js"></script>
 <script src="/js/function-check-viewport.js"></script>

@@ -19,14 +19,16 @@ mongoose.connect(config.database.url);
 var index = require('./routes/index');
 var items = require('./routes/items');
 var profile = require('./routes/profile');
-var cart = require('./routes/orders');
 // Rute za back
 var admin = require('./routes/backend/admin');
 var users = require('./routes/backend/users');
+var orders = require('./routes/backend/order');
 
 var auth = require('./routes/auth')(passport);
 
 var app = express();
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -55,10 +57,10 @@ app.use(passport.session());
 app.use('/', index);
 app.use('/items', items);
 app.use('/profile', profile);
-app.use('/cart', cart);
 
 app.use('/admin', admin);
 app.use('/userlist', users);
+app.use('/orders', orders);
 app.use('/auth', auth);
 
 console.log("Liskaa!");

@@ -1,10 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
-var profileController = require('../../controller/profilecontroller');
+var userController = require('../../controller/userController');
 
 
 /* GET home page. */
-router.get('/', profileController.profile_list);
+router.get('/', userController.user_list);
+router.get('/:id', userController.user_detail_admin);
+
 
 module.exports = router;

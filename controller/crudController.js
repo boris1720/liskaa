@@ -1,7 +1,50 @@
 var express = require('express');
 var router = express.Router();
+var Itemsss = require('../db/item');
 var ObjectId = require('mongodb').ObjectId;
 var unique = require('array-unique');
+
+
+module.exports.getTest = function(req, res) {
+    var item = {
+        name: req.body.name,
+        price: req.body.price,
+        description: req.body.description,
+        image: req.body.image,
+        gallery: req.body.gallery,
+        category: req.body.category
+    };
+
+    Itemsss.findOne({
+        name: item.name
+    }, function (err, doc) {
+        if (err) {
+            res.status(500).send('error occured')
+        } else {
+            if (doc) {
+                res.status(500).send('Item already exists')
+            } else {
+                var record = new Itemsss();
+                record.name = item.name;
+                record.price = item.price;
+                record.description = item.description;
+                record.image = item.image;
+                record.gallery = [["item", "2"], ["item2", "1"], ["item3", "4"]];
+                record.category = item.category;
+
+                record.save(function (err, items) {
+                    if (err) {
+                        res.status(500).send('db error')
+                    } else {
+                        res.redirect('/admin')
+                    }
+                })
+            }
+        }
+    })
+
+
+};
 
 
 // Get All Items, render Update list
@@ -121,7 +164,7 @@ module.exports.addItem = function(req, res) {
 
     req.db.collection('items').insert(item, function(err, result) {
         console.log('success', 'Data added successfully!');
-        res.redirerect('backend/admin');
+        res.redirect('backend/admin');
     })
 };
 
@@ -130,7 +173,7 @@ module.exports.deleteItem = function(req, res) {
     console.log(o_id);
     req.db.collection('items').remove({"_id": o_id}, function(err, result) {
 
-            res.redirect('/admin/items')
+            res.redirect('/admin/update')
 
     })
 };

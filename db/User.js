@@ -12,14 +12,38 @@ var userSchema = new schema({
         type: String,
         required: true,
     },
-})
+    firstname: {
+        type: String,
+        required: true
+    },
+    lastname: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    address: {
+        type: String,
+        required: true
+    },
+    city: {
+        type: String,
+        required: true
+    },
+    phone: {
+        type: String,
+        required: true
+    }
+});
 
 userSchema.methods.hashPassword = function (password) {
     return bcrypt.hashSync(password,bcrypt.genSaltSync(10))
-}
+};
 
 userSchema.methods.comparePassword = function (password,hash) {
     return bcrypt.compareSync(password,hash)
-}
+};
 
 module.exports = mongoose.model('users',userSchema,'users');

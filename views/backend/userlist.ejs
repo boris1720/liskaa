@@ -11,38 +11,63 @@
     <link rel="stylesheet" type="text/css" href="../css/main.css" />
 </head>
 <body class="animsition">
-<div class="login" id="page">
-    <% include ../partials/adminheader.ejs %>
-    <section class="boxed-sm">
-        <div class="container text-center">
-            <h2>userlist</h2>
-            <table width='80%' border=0>
+<div class="shop-layout-3" id="page">
+    <% include ../partials/header.ejs %>
 
-                <tr style='text-align:left; background-color:#CCC'>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Email</th>
-                </tr>
+    <section >
+        <div class="container" style="width: 100%">
+            <div class="row">
+                <% include ../partials/adminheader.ejs %>
+                <div class="col-md-10">
+                    <div class="tab-content tab-content-style-1">
+                        <div class="active" id="users" >
+                            <div class="group-btn-control-wrapper">
+                                <a href="/admin/create"><button  class="btn btn-brand no-radius">NEW USER</button></a>
+                                <button class="btn btn-wishlist btn-brand-ghost no-radius">
+                                    <i class="fa fa-heart"></i>
+                                </button>
+                            </div>
+                            <table class="shop_attributes table table-striped table-bordered">
+                                <tbody>
+                                <tr style='text-align:left; background-color:#CCC'>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Address</th>
+                                    <th>City</th>
+                                    <th>..?</th>
+                                    <th>Action</th>
+                                </tr>
 
-                <% if (data) { %>
-                <% data.forEach(function(user){ %>
-                <tr>
-                    <td><%= user.name %></td>
-                    <td><%= user.age %></td>
-                    <td><%= user.email %></td>
+                                <% if (data) { %>
+                                <% data.forEach(function(user){ %>
+                                <tr>
+                                    <td><%= user.firstname %> <%= user.lastname %></td>
+                                    <td><%= user.email %></td>
+                                    <td><%= user.phone %></td>
+                                    <td><%= user.address %></td>
+                                    <td><%= user.city %></td>
+                                    <td> </td>
+                                    <td>
+                                        <div style="float:left">
+                                            <a href='/userlist/<%= user._id %>'>Details</a> &nbsp;
 
-                </tr>
-                <% }) %>
-                <% } %>
-
-            </table>
-
-
-
+                                        </div>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                                <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </section>
 </div>
+<% include ../partials/footer.ejs %>
 <script src="/js/library/jquery.min.js"></script>
 <script src="/js/library/bootstrap.min.js"></script>
 <script src="/js/function-check-viewport.js"></script>
